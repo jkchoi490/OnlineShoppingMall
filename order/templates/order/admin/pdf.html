@@ -1,0 +1,50 @@
+<html>
+<body>
+    <h1>장고 온라인샵</h1>
+    <p>
+        주문번호 {{order.id}}<br/>
+        <span class="secondary">{{order.created|date:"M d, Y"}}</span>
+    </p>
+    <h3>{% if order.paid %}Payment Accepted{%else%}Pending payment{%endif%}</h3>
+    <p>
+        {{order.first_name}} {{order.last_name}}<br>
+        {{order.email}}<br>
+        {{order.address}}<br>
+        {{order.postal_code}}, {{order.city}}<br>
+    </p>
+    <h3>상품 리스트</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>상품</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>금액</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+                <tr class="row{% cycle "1" "2" %}">
+                    <td>{{item.product.name}}</td>
+                    <td class="num">{{item.price}}</td>
+                    <td class="num">{{item.quantity}}</td>
+                    <td class="num">{{item.get_item_price}}</td>
+                </tr>
+            {% endfor %}
+
+            <!-- 만약 쿠폰 있으면, 할인금액 표시 -->
+            {% if order.coupon %}
+                <tr class="discount">
+                    <td colspan="3">할인액</td>
+                    <td class="num">{{order.discount}}</td>
+                </tr>
+            {%endif%}
+                
+            <tr class="total">
+                <td colspan="3">최종금액</td>
+                <td class="num">{{order.get_total_price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

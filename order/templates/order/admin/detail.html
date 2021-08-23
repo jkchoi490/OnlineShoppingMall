@@ -1,0 +1,48 @@
+<!-- 장고 admin의 base template을 확장하여 사용 -->
+{% extends 'admin/base_site.html' %}
+
+{% block title %}
+    Order {{order.id}} Detail
+{% endblock %}
+
+<!-- breadcrumbs: 현재 페이지 위치를 알려주는 기능
+url 형식: 'admin:앱이름_모델이름_내용' -->
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+        <a href="{% url 'admin:order_order_changelist' %}">Orders</a> &rsaquo;
+        <a href="{% url 'admin:order_order_change' order.id %}">Order {{order.id}}</a> &rsaquo;Detail
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>Order {{order.id}}</h1>
+    <ul class="object-tools">
+        <li>
+            <!-- Java Script 코드: 클릭할 경우 해당 정보를 HTML로 출력하는 코드 -->
+            <a href="#" onclock="window.print();">주문내용 출력</a>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <th>주문 일시</th>
+            <td>{{order.created}}</td>
+        </tr>
+        <tr>
+            <th>고객명</th>
+            <td>{{order.first_name}} {{order.last_name}}</td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td>{{order.email}}</td>
+        </tr>
+        <tr>
+            <th>주소</th>
+            <td>{{order.address}} {{order.postal_code}} {{order.city}}</td>
+        </tr>
+        <tr>
+            <th>주문 금액</th>
+            <td>{{order.get_total_price}}</td>
+        </tr>
+    </table>
+{% endblock %}
