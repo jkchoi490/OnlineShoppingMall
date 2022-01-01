@@ -130,7 +130,7 @@ class OrderTransactionManager(models.Manager): # Manager 클래스 상속받음
         success: 결재 완료 여부
         transaction_status: transaction 상태, 처음 만들 경우 정보 없음
         success/transaction_status가 None 상태라는 의미는
-        최초 거래는 주문정보와 금액만 가지고 생성 가능하다는 의미임
+        최초 거래는 주문정보와 금액만 가지고 생성 가능하다는 의미
         '''
         # 주문이 없을 경우 에러 발생 --> 무조건 에러 뿜어야 함
         if not order:
@@ -164,7 +164,7 @@ class OrderTransactionManager(models.Manager): # Manager 클래스 상속받음
         # models.Manager를 상속 받았으므로 model이 있을 것임
         # model을 사용하여 transaction 생성하고 주문정보 연결
         
-        # 도대체 model이 뭐야?
+        # model:
         # 아래에 정의된 OrderTransaction 클래스에서
         # 나의 모델 메니저를 지정하여 사용
         # 즉, self.model은 내 매니저가 누구다라고 

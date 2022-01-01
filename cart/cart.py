@@ -86,7 +86,7 @@ class Cart(object):
         # 쿠폰을 가지고 있는 경우
         # 쿠폰 할인 금액보다 제품가격이 
         # 큰 경우에만 쿠폰 할인액 적용 
-        # (우리 예제이서는 배송비 계산은 제외함)
+        # * 배송비 계산 제외
         if self.coupon:
             if self.get_product_total() >= self.coupon.amount:
                 return self.coupon.amount

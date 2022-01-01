@@ -17,7 +17,7 @@ def add_coupon(request):
         code = form.cleaned_data['code']
 
         try:
-            # 만약 유효기간 내 쿠폰이라면 ...
+            # 만약 유효기간 내 쿠폰이라면
             coupon = Coupon.objects.get(
                 # 쿠폰번호 일치
                 code__iexact=code,

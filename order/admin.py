@@ -1,6 +1,5 @@
-import csv # 파이썬 내장 모듈
-import datetime # 파이썬 내장 모듈
-
+import csv
+import datetime #파이썬 내장모듈
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -131,5 +130,5 @@ class OrderAdmin(admin.ModelAdmin):
     actions = [export_to_csv]
 
 # 관리자 페이지에 Order를 Display 하는데
-# OrderAdmin 옵션들을 적용하여 보여주겠다
+# OrderAdmin 옵션들을 적용하여 보여줄것이다.
 admin.site.register(Order, OrderAdmin)

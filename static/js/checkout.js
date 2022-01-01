@@ -4,10 +4,10 @@ $(function() {
     var IMP=window.IMP;
     
     // 아임포트 대시보드-시스템-내정보-가맹점식별코드에서 확인, 
-    // 경고 REST API secret이 노출되지 않도록 항상 주의
+    // 경고 REST API secret이 노출되지 않도록 항상 주의해야함
     IMP.init('imp06463859');
     
-    // order-form 상태가 submit on (제출하기 클릭) 상태이면 function 실행히켜라
+    // order-form 상태가 submit on (제출하기 클릭) 상태이면 function 실행시킴
     $('.order-form').on('submit', function(e) {
 
         // order-form에서 가격을 찾아서 콤마(,)를 제거
@@ -30,11 +30,11 @@ $(function() {
 
         // 결재 정보가 만들어졌다면 아임포트로 실제 결재 시도
         // 아임포트 결재 매뉴얼 확인: https://bit.ly/3njJjQy
-        // 아임포트에서 요구하는 대로 작성해야 함
+        // 아임포트에서 요구하는 대로 작성해야 함**
         if(merchant_id!=='') {
            
-            // 아임포트에서 받을 정보(결재 요청 정보), 
-            // 즉, 우리가 아임포트에 보내줄 내용
+            // 아임포트에서 받을 정보(결재 요청 정보) -> 아임포트에 보내줄 내용
+    
                 IMP.request_pay({pg : 'html5_inicis',
                 pay_method : 'card',
                 
@@ -62,7 +62,7 @@ $(function() {
                     
                     // 결재 검증을 위한 Ajax 함수, 아래에 내용을 구현해 줘야 함 --> 검증 및 환불 가능
                     // rsp.imp_uid (결재 고유번호) --> 요게 있어야 나중에 환불 처리 가능하다
-                    // 검증 과정으로 넘김 --> 아임포트에서 넘겨받은 정보와 우리 서버에 저장된 정보를 비교
+                    // 검증 과정으로 넘김 --> 아임포트에서 넘겨받은 정보와 내 서버에 저장된 정보를 비교
                     ImpTransaction(e, order_id, rsp.merchant_uid, rsp.imp_uid, rsp.paid_amount);
                 } 
                 
