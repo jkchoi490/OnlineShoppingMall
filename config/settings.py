@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#내가설정해준부분-pymysql연동--------------------------
+
 import pymysql
 pymysql.version_info=(1, 4, 2, "final", 0)
 pymysql.install_as_MySQLdb()
