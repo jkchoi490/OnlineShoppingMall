@@ -3,9 +3,8 @@ $(function() {
     // js 변수 설정
     var IMP=window.IMP;
     
-    // 아임포트 대시보드-시스템-내정보-가맹점식별코드에서 확인, 
-    // 경고 REST API secret이 노출되지 않도록 항상 주의해야함
-    IMP.init('imp06463859');
+    // 아임포트 가맹점식별코드
+    IMP.init('가맹점식별코드');
     
     // order-form 상태가 submit on (제출하기 클릭) 상태이면 function 실행시킴
     $('.order-form').on('submit', function(e) {

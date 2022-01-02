@@ -44,7 +44,7 @@ def export_to_csv(modeladmin, request, queryset):
     # 기본적으로 장고 모델의 각 아이템에는 
     # field.many_to_many 및 field.one_to_many에 대하여
     # True/False가 지정되어 있음
-    # 우리는 하나의 필드에 하나의 값이 있는 것만 선택함
+    # 하나의 필드에 하나의 값이 있는 것만 선택함
     fields = [
         field for field in opts.get_fields() if not field.many_to_many and not field.one_to_many
     ]

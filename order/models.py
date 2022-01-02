@@ -49,7 +49,7 @@ class Order(models.Model):
 
     def get_total_price(self):
         total_product = self.get_total_product()
-        # 우리 시스템에서는 배송비는 고려하지 않음
+        # 현 시스템은 배송비는 고려하지 않음
         return total_product - self.discount
 
 # 주문에 포함된 제품 정보를 담기 위해 만드는 모델
@@ -148,9 +148,7 @@ class OrderTransactionManager(models.Manager): # Manager 클래스 상속받음
         final_hash = hashlib.sha1((order_hash + email_hash).encode('utf-8')).hexdigest()[:10]
 
         
-        # 그냥 참고: Python 문자열 표현 방법 3가지
-        # 어떤걸 써도 무방, Python3 에서는 직관적으로 
-        # 이용하기 편리한 f 문법 제공
+        # Python 문자열 표현 방법 3가지
         merchant_order_id = '%s' % (final_hash)
         # merchant_order_id = '{}'.format(final_hash)
         # merchant_order_id = f'{final_hash}'
