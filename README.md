@@ -1,3 +1,3 @@
 # OnlineShoppingMall
-진행 기간 : 2021.03 ~ 2021.06
-SW프로젝트1
+<br/>
+Django 와 AWS Cloud Platform 을 사용한 온라인쇼핑몰 웹 애플리케이션 개발
